@@ -1,9 +1,9 @@
 {
   "name": "love-for-anime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
-    "www": "node -e \"const fs=require('fs');fs.rmSync('www',{recursive:true,force:true});fs.mkdirSync('www');for(const f of fs.readdirSync('.'))if(f.endsWith('.html')||['css','js','img','sparkle.mpeg'].includes(f))fs.cpSync(f,'www/'+f,{recursive:true})\"",
+    "www": "node -e \"const fs=require('fs');fs.rmSync('www',{recursive:true,force:true});fs.mkdirSync('www');for(const f of fs.readdirSync('.'))if(f.endsWith('.html')||['css','js','img','fonts','sparkle.mpeg'].includes(f))fs.cpSync(f,'www/'+f,{recursive:true})\"",
     "android:sync": "npm run www && npx cap sync android",
     "android:apk": "npm run android:sync && node build-apk.js"
   },
