@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lovely Complex - Love for anime</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2b2b2b;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* CONTENEDOR ANCHO PARA ABARCAR TODA LA PANTALLA */
+    .contenedor-anime {
+      background-color: #d5f99b;
+      width: 100%;
+      min-height: calc(100vh - 40px);
+      padding: 25px;
+      border-radius: 16px;
+    }
+
+    .btn-volver {
+      display: inline-block;
+      background-color: #fad4b2;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .tarjeta-anime {
+      display: flex;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .poster-container {
+      flex: 1;
+      max-width: 450px;
+    }
+
+    .poster-img {
+      width: 100%;
+      height: 100%;
+      max-height: 650px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .info-container {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .caja-info {
+      background-color: #fad4b2;
+      padding: 15px 20px;
+      border-radius: 12px;
+    }
+
+    .caja-info h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: #3b6038;
+      font-size: 1.2rem;
+    }
+
+    .caja-info p {
+      margin: 6px 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .fila-superior {
+      display: flex;
+      gap: 15px;
+    }
+
+    .fila-superior .caja-info {
+      flex: 1;
+    }
+
+    .caja-trailer {
+      flex: 1;
+      min-height: 320px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .caja-trailer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor-anime">
+    <a href="romance.html" class="btn-volver">← Volver a Romance</a>
+
+    <div class="tarjeta-anime">
+      <div class="poster-container">
+        <img src="img/portadas/lovely_complex.jpeg" alt="Lovely Complex" class="poster-img">
+      </div>
+
+      <div class="info-container">
+        <div class="fila-superior">
+          <div class="caja-info">
+            <p><strong>Director:</strong> Kōnosuke Uda</p>
+            <p><strong>Estudio:</strong> Toei Animation</p>
+            <p><strong>Episodios:</strong> 24</p>
+          </div>
+
+          <div class="caja-info">
+            <h3>¿De qué trata?</h3>
+            <p>Risa Koizumi, una chica muy alta, y Atsushi Otani, un chico muy bajo, que superan sus diferencias de estatura y se enamoran mientras lidian con sus inseguridades.</p>
+          </div>
+        </div>
+
+        <div class="caja-info">
+          <h3>Subgéneros</h3>
+          <p>Comedia romántica, drama, escolar, rencuentos de la vida</p>
+        </div>
+
+        <div class="caja-info" style="text-align: center; padding: 25px; background-color: #fad4b2; border-radius: 12px;">
+  <h3 style="margin-top:0; color: #3b6038;">Tráiler Oficial</h3>
+  <p style="margin-bottom: 15px;">Este video tiene restricción de reproducción externa en sitios web.</p>
+  <a href="https://youtu.be/4nt3bOmkljc?si=jUhFH50pFB1Nhvv5" target="_blank" style="display: inline-block; background-color: #ff0000; color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 1rem;">
+    ▶️ Ver Tráiler en YouTube
+  </a>
+</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOVE FOR ANIME - Mis Favoritos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="pagina-favoritos">
+
+  <!-- ENCABEZADO Y MENÚ -->
+  <header>
+    <h1>LOVE FOR ANIME</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="generos.html">Géneros</a>
+    <a href="emision.html">En emisión</a>
+    <a href="favoritos.html" class="activo">Mis favoritos</a>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <div class="seccion-titulo">
+      <h2>Mis Animes Favoritos</h2>
+      <p>Administra y personaliza tu top personal de anime</p>
+    </div>
+
+    <!-- CAJA PARA AÑADIR ANIME -->
+    <div class="caja-agregar">
+      <label for="input-anime">Agregar nuevo anime:</label>
+      <input type="text" id="input-anime" placeholder="Escribe el nombre del anime...">
+      <button class="btn-agregar" onclick="agregarFavorito()">+ Añadir a Favoritos</button>
+    </div>
+
+    <!-- LISTA DE FAVORITOS -->
+    <div class="contenedor-lista" id="contenedor-lista">
+
+      <!-- Ficha 1: Jujutsu Kaisen -->
+      <div class="item-favorito">
+        <div class="numero-ranking">1</div>
+        <img src="img/portadas/jujutsu_kaisen.jpeg" alt="Jujutsu Kaisen" class="poster-fav" onerror="this.src='img/portadas/default.jpeg'">
+        <div class="info-fav">
+          <h3>Jujutsu Kaisen</h3>
+          <div class="estrellas">⭐⭐⭐⭐⭐</div>
+          <div class="detalles-meta">Acción / Sobrenatural • MAPPA</div>
+          <p class="sinopsis-corta">Yuji Itadori se traga un dedo maldito para salvar a sus amigos y se convierte en el recipiente de Sukuna, entrando al mundo de los hechiceros jujutsu.</p>
+        </div>
+        <div class="acciones-fav">
+          <button class="btn-quitar" onclick="quitarFavorito(this)">Quitar de Favoritos</button>
+        </div>
+      </div>
+
+      <!-- Ficha 2: Banana Fish -->
+      <div class="item-favorito">
+        <div class="numero-ranking">2</div>
+        <img src="img/portadas/banana_fish.jpeg" alt="Banana Fish" class="poster-fav" onerror="this.src='img/portadas/default.jpeg'">
+        <div class="info-fav">
+          <h3>Banana Fish</h3>
+          <div class="estrellas">⭐⭐⭐⭐⭐</div>
+          <div class="detalles-meta">Acción / Drama • MAPPA</div>
+          <p class="sinopsis-corta">Ash Lynx, un joven líder de pandillas en Nueva York, conoce al fotógrafo japonés Eiji Okumura mientras investiga la misteriosa droga 'Banana Fish'.</p>
+        </div>
+        <div class="acciones-fav">
+          <button class="btn-quitar" onclick="quitarFavorito(this)">Quitar de Favoritos</button>
+        </div>
+      </div>
+
+      <!-- Ficha 3: Nana -->
+      <div class="item-favorito">
+        <div class="numero-ranking">3</div>
+        <img src="img/portadas/nana.jpeg" alt="Nana" class="poster-fav" onerror="this.src='img/portadas/default.jpeg'">
+        <div class="info-fav">
+          <h3>Nana</h3>
+          <div class="estrellas">⭐⭐⭐⭐⭐</div>
+          <div class="detalles-meta">Drama / Romance / Música • Madhouse</div>
+          <p class="sinopsis-corta">Dos chicas con el mismo nombre y personalidades opuestas se cruzan en un tren hacia Tokio y terminan compartiendo departamento y sus vidas amorosas.</p>
+        </div>
+        <div class="acciones-fav">
+          <button class="btn-quitar" onclick="quitarFavorito(this)">Quitar de Favoritos</button>
+        </div>
+      </div>
+
+      <!-- Ficha 4: Love Through a Prism -->
+      <div class="item-favorito">
+        <div class="numero-ranking">4</div>
+        <img src="img/portadas/love_through_a_prism.jpeg" alt="Love Through a Prism" class="poster-fav" onerror="this.src='img/portadas/default.jpeg'">
+        <div class="info-fav">
+          <h3>Love Through a Prism</h3>
+          <div class="estrellas">⭐⭐⭐⭐⭐</div>
+          <div class="detalles-meta">Romance / Escolar</div>
+          <p class="sinopsis-corta">Una cautivadora historia romántica que explora los sentimientos juveniles y las distintas perspectivas del amor a través de un prisma de emociones.</p>
+        </div>
+        <div class="acciones-fav">
+          <button class="btn-quitar" onclick="quitarFavorito(this)">Quitar de Favoritos</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="pie-pagina">
+    <p>Creado por @amayraniibm → maia</p>
+  </footer>
+
+  <audio id="musica-fondo" loop src="sparkle.mpeg"></audio>
+
+  <!-- BASE DE DATOS COMPLETA DE TU SITIO WEB -->
+  <script>
+    const baseAnimes = {
+      "demon slayer": {
+        genero: "Acción / Sobrenatural • Ufotable",
+        sinopsis: "Tanjiro Kamado lucha contra demonios para vengar a su familia y buscar una cura para convertir a su hermana Nezuko de nuevo en humana.",
+        imagen: "demon_slayer.jpeg"
+      },
+      "a silent voice": {
+        genero: "Drama / Romance • Kyoto Animation",
+        sinopsis: "Shoya Ishida busca redimirse tras haberle hecho bullying en la escuela primaria a Shouko Nishimiya, una chica sorda.",
+        imagen: "a_silent_voice.jpeg"
+      },
+      "your name": {
+        genero: "Romance / Fantasía • CoMix Wave Films",
+        sinopsis: "Mitsuha y Taki comienzan a intercambiar cuerpos misteriosamente a pesar de no conocerse y vivir en lugares distintos.",
+        imagen: "your_name.jpeg"
+      },
+      "grave of the fireflies": {
+        genero: "Drama / Bélico • Studio Ghibli",
+        sinopsis: "Dos hermanos huérfanos, Seita y Setsuko, luchan desgarradoramente por sobrevivir en Japón durante los últimos meses de la Segunda Guerra Mundial.",
+        imagen: "grave_of_the_fireflies.jpeg"
+      },
+      "jujutsu kaisen": {
+        genero: "Acción / Sobrenatural • MAPPA",
+        sinopsis: "Yuji Itadori se traga un dedo maldito para salvar a sus amigos y se convierte en el recipiente de Sukuna.",
+        imagen: "jujutsu_kaisen.jpeg"
+      },
+      "haikyu": {
+        genero: "Deportes / Comedia • Production I.G",
+        sinopsis: "Shoyo Hinata se une al equipo de voleibol de la preparatoria Karasuno para superar sus limitaciones físicas y llegar a lo más alto.",
+        imagen: "haikyu.jpeg"
+      },
+      "spy x family": {
+        genero: "Comedia / Acción • Wit Studio & CloverWorks",
+        sinopsis: "Un espía, una asesina y una niña telépata forman una familia falsa para cumplir sus respectivas misiones secretas.",
+        imagen: "spy_x_family.jpeg"
+      },
+      "death note": {
+        genero: "Misterio / Suspenso • Madhouse",
+        sinopsis: "Light Yagami encuentra una libreta sobrenatural que le permite matar a cualquiera cuyo nombre escriba en ella.",
+        imagen: "death_note.jpeg"
+      },
+      "banana fish": {
+        genero: "Acción / Drama • MAPPA",
+        sinopsis: "Ash Lynx, un joven líder de pandillas en Nueva York, conoce al fotógrafo Eiji Okumura mientras investiga la misteriosa droga 'Banana Fish'.",
+        imagen: "banana_fish.jpeg"
+      },
+      "given": {
+        genero: "Romance / Música • Lerche",
+        sinopsis: "Mafuyu Sato conoce a Ritsuka Uenoyama, quien le enseña a tocar la guitarra y juntos forman una banda cargada de emociones.",
+        imagen: "given.jpeg"
+      },
+      "sasaki to miyano": {
+        genero: "Romance / Escolar • Studio Deen",
+        sinopsis: "Miyano, un chico aficionado al Boys' Love, entabla una tierna relación con Sasaki, un estudiante mayor de personalidad relajada.",
+        imagen: "sasaki_to_miyano.jpeg"
+      },
+      "lovely complex": {
+        genero: "Romance / Comedia • Toei Animation",
+        sinopsis: "Risa (una chica muy alta) y Otani (un chico bajito) forman un dúo cómico escolar que termina desarrollando profundos sentimientos.",
+        imagen: "lovely_complex.jpeg"
+      },
+      "kimi ni todoke": {
+        genero: "Romance / Escolar • Production I.G",
+        sinopsis: "Sawako, temida por parecerse a 'Sadako', encuentra comprensión y amor al conocer al popular y amable Kazehaya.",
+        imagen: "kimi_ni_todoke.jpeg"
+      },
+      "bloom into you": {
+        genero: "Romance / Escolar • TROYCA",
+        sinopsis: "Yuu Koito no comprende las canciones de amor hasta que conoce a Touko Nanami, la presidenta del consejo estudiantil.",
+        imagen: "bloom_into_you.jpeg"
+      },
+      "the disastrous life of saiki k.": {
+        genero: "Comedia / Sobrenatural • J.C.Staff",
+        sinopsis: "Kusuo Saiki tiene poderosas habilidades psíquicas, pero solo desea llevar una vida escolar completamente normal.",
+        imagen: "saiki_k.jpeg"
+      },
+      "komi can't communicate": {
+        genero: "Comedia / Escolar • OLM",
+        sinopsis: "Komi es la chica más popular del colegio, pero sufre de una severa ansiedad social. Tadano decide ayudarla a hacer 100 amigos.",
+        imagen: "komi_cant_communicate.jpeg"
+      },
+      "monthly girls' nozaki-kun": {
+        genero: "Comedia / Romance • Doga Kobo",
+        sinopsis: "Chiyo Sakura intenta confesar sus sentimientos a Nozaki, pero termina convirtiéndose en su asistente de manga shojo.",
+        imagen: "monthly_girls.jpeg"
+      },
+      "ouran high school host club": {
+        genero: "Comedia / Romance • Bones",
+        sinopsis: "Haruhi Fujioka rompe un jarrón costoso y debe trabajar vestida de chico en el famoso club de anfitriones de la escuela.",
+        imagen: "ouran_high_school_host_club.jpeg"
+      },
+      "orange": {
+        genero: "Drama / Romance • Telecom Animation Film",
+        sinopsis: "Naho recibe cartas del futuro escritas por ella misma para salvar la vida de Kakeru, el nuevo estudiante transferido.",
+        imagen: "orange.jpeg"
+      },
+      "yuri on ice": {
+        genero: "Deportes / Drama • MAPPA",
+        sinopsis: "El patinador Yuuri Katsuki recupera la pasión por el hielo bajo el entrenamiento del legendario campeón Victor Nikiforov.",
+        imagen: "yuri_on_ice.jpeg"
+      },
+      "blue lock": {
+        genero: "Deportes / Acción • Eight Bit",
+        sinopsis: "Trescientos delanteros compiten en una instalación secreta para convertirse en el delantero definitivo de Japón.",
+        imagen: "blue_lock.jpeg"
+      },
+      "sk8 the infinity": {
+        genero: "Deportes / Acción • Bones",
+        sinopsis: "Reki introduce a Langa en 'S', una carrera clandestina de patinaje extremadamente peligrosa en una mina abandonada.",
+        imagen: "sk8.jpeg"
+      },
+      "kuroko's basketball": {
+        genero: "Deportes / Acción • Production I.G",
+        sinopsis: "Kuroko, el sexto jugador fantasma, y Taiga Kagami se unen para llevar al equipo de Seirin a derrotar a la Generación de Milagros.",
+        imagen: "kurokos_basketball.jpeg"
+      },
+      "attack on titan": {
+        genero: "Acción / Fantasía Oscura • Wit Studio / MAPPA",
+        sinopsis: "Eren Jaeger jura erradicar a todos los Titanes tras la destrucción de su ciudad natal y la muerte de su madre.",
+        imagen: "attack_on_titan.jpeg"
+      },
+      "chainsaw man": {
+        genero: "Acción / Oscuro • MAPPA",
+        sinopsis: "Denji resucita como un híbrido entre humano y demonio motosierra tras hacer un pacto con Pochita.",
+        imagen: "chainsaw_man.jpeg"
+      },
+      "izetta: the last witch": {
+        genero: "Acción / Fantasía • Ajia-do Animation Works",
+        sinopsis: "Izetta, la última bruja viva, usa sus poderes mágicos para proteger a la princesa Finé y a su nación durante la guerra.",
+        imagen: "izetta.jpeg"
+      },
+      "frieren: beyond journey's end": {
+        genero: "Fantasía / Drama • Madhouse",
+        sinopsis: "La elfa Frieren reflexiona sobre la vida, la mortalidad y los recuerdos tras el viaje de diez años con su antiguo grupo de héroes.",
+        imagen: "frieren.jpeg"
+      },
+      "one piece": {
+        genero: "Aventura / Acción • Toei Animation",
+        sinopsis: "Luffy y su tripulación de Sombrero de Paja navegan por el Gran Line en busca del legendario tesoro One Piece.",
+        imagen: "one_piece.jpeg"
+      },
+      "the apothecary diaries": {
+        genero: "Misterio / Histórico • OLM / Toho Animation",
+        sinopsis: "Maomao, una farmacéutica secuestrada, utiliza sus conocimientos en medicina para resolver intrigas dentro del palacio imperial.",
+        imagen: "the_apothecary_diaries.jpeg"
+      },
+      "ascendance of a bookworm": {
+        genero: "Fantasía / Recuentos de vida • Ajia-do",
+        sinopsis: "Una amante de los libros reencarna como Myne en un mundo medieval donde la lectura es un lujo reservado a la nobleza.",
+        imagen: "ascendance_of_a_bookworm.jpeg"
+      },
+      "love through a prism": {
+        genero: "Romance / Escolar",
+        sinopsis: "Una cautivadora historia romántica que explora los sentimientos juveniles y las distintas perspectivas del amor.",
+        imagen: "love_through_a_prism.jpeg"
+      },
+      "nana": {
+        genero: "Drama / Romance / Música • Madhouse",
+        sinopsis: "Dos chicas con el mismo nombre y personalidades opuestas comparten departamento y sus historias de vida en Tokio.",
+        imagen: "nana.jpeg"
+      }
+    };
+
+    function agregarFavorito() {
+      const input = document.getElementById('input-anime');
+      const nombreAnime = input.value.trim();
+
+      if (nombreAnime === "") {
+        alert("Por favor, escribe el nombre de un anime.");
+        return;
+      }
+
+      const claveBusqueda = nombreAnime.toLowerCase();
+      const nombreFormateado = claveBusqueda.replace(/\s+/g, "").replace(/[^a-z0-9]/g, "");
+
+      let generoAnime = "Anime Preferido";
+      let sinopsisAnime = "Anime añadido recientemente a tu lista personal de favoritos.";
+      let nombreImagen = nombreFormateado + ".jpeg";
+
+      if (baseAnimes[claveBusqueda]) {
+        generoAnime = baseAnimes[claveBusqueda].genero;
+        sinopsisAnime = baseAnimes[claveBusqueda].sinopsis;
+        nombreImagen = baseAnimes[claveBusqueda].imagen;
+      }
+
+      const lista = document.getElementById('contenedor-lista');
+      const nuevoItem = document.createElement('div');
+      nuevoItem.className = 'item-favorito';
+
+      nuevoItem.innerHTML = `
+        <div class="numero-ranking">0</div>
+        <img src="img/portadas/${nombreImagen}" alt="${nombreAnime}" class="poster-fav" onerror="this.src='img/portadas/default.jpeg'">
+        <div class="info-fav">
+          <h3>${nombreAnime}</h3>
+          <div class="estrellas">⭐⭐⭐⭐⭐</div>
+          <div class="detalles-meta">${generoAnime}</div>
+          <p class="sinopsis-corta">${sinopsisAnime}</p>
+        </div>
+        <div class="acciones-fav">
+          <button class="btn-quitar" onclick="quitarFavorito(this)">Quitar de Favoritos</button>
+        </div>
+      `;
+
+      lista.appendChild(nuevoItem);
+      input.value = "";
+      actualizarNumeracion();
+    }
+
+    function quitarFavorito(boton) {
+      const item = boton.closest('.item-favorito');
+      item.remove();
+      actualizarNumeracion();
+    }
+
+    function actualizarNumeracion() {
+      const items = document.querySelectorAll('.item-favorito');
+      items.forEach((item, index) => {
+        const numero = item.querySelector('.numero-ranking');
+        if (numero) {
+          numero.textContent = index + 1;
+        }
+      });
+    }
+
+    const audio = document.getElementById('musica-fondo');
+    document.addEventListener('click', () => {
+      if (audio && audio.paused) {
+        audio.play().catch(() => {});
+      }
+    }, { once: true });
+  </script>
+</body>
+</html>

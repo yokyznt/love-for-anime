@@ -1,0 +1,1173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, serif;
+    background-color: #d8ffa7;
+}
+
+header {
+    background-color: #477647;
+    color: #d8ffa7;
+    padding: 10px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center ;
+    border: none;
+    outline: none;
+}
+
+.titulo-hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 8%; /* Posicionado a la derecha */
+    transform: translateY(-50%);
+    text-align: right;
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    
+    color: #ffffff; /* Texto relleno en blanco */
+    text-shadow: 
+        3px 3px 0px #2d4a22,
+        -3px -3px 0px #2d4a22,
+        3px -3px 0px #2d4a22,
+        -3px 3px 0px #2d4a22,
+        0px 5px 12px rgba(0, 0, 0, 0.6); /* Borde verde oscuro y sombra */
+    
+    margin: 0;
+    z-index: 3;
+}
+
+.vistos {
+    padding: 10px;
+    background-color: #d8ffa7;
+}
+
+.vistos h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+carrusel-contenedor {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 0;
+    position: relative;
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+    animation: desplazarDerecha 25s linear infinite;
+}
+
+.carrusel-track:hover {
+    animation-play-state: paused;
+}
+
+.carrusel-track img {
+    height: 220px;
+    width: auto;
+    object-fit: contain;
+    border: 2px solid #477647;
+    background-color: transparent;
+    display: block;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@keyframes desplazarDerecha {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* --- CONTENEDOR Y ANIMACIÓN DEL TOTORO CSS --- */
+.chibis-contenedor {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 65px;
+    margin-bottom: -5px;
+    pointer-events: none;
+}
+
+.totoro-caminando {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    
+    /* Animación de desplazamiento de derecha a izquierda */
+    animation: caminarIzquierda 12s linear infinite, bamboleo 0.4s ease-in-out infinite alternate;
+}
+
+.totoro-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Movimiento de derecha a izquierda */
+@keyframes caminarIzquierda {
+    0% {
+        right: -80px;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+/* EFECTO DE CAMINADO: Pequeño bamboleo al dar los pasos */
+@keyframes bamboleo {
+    0% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    100% {
+        transform: translateY(-4px) rotate(2deg);
+    }
+}
+
+
+
+/* --- SECCIÓN DE ANIMES Y CARRUSEL OPTIMIZADO (SIN FONDO VERDE) --- */
+.vistos {
+    background-color: transparent; /* Se quita el fondo verde */
+    position: relative;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+#hojas-contenedor {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none;
+    z-index: 1; /* Detras de las portadas */
+}
+
+/* --- CARRUSEL Y PORTADAS (ENFRENTE) --- */
+.carrusel-contenedor,
+.carrusel.track,
+.carrusel-track img {
+    position: relative;
+    z-index: 5 !important; /* Capa superior para tapar las hojas */
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+    animation: desplazarDerecha 25s linear infinite;
+    /* Mantiene el carrusel rápido y fluido */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+
+/* --- HOJAS CON CAÍDA CONTINUA E INFINITA --- */
+.hoja-cafe {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background-color: #c49462; /* Café claro */
+    border-radius: 0% 100% 0% 100%;
+    opacity: 0.75;
+    /* Repetición infinita y lineal */
+    animation: caerHojaInfinita linear infinite;
+    will-change: transform;
+}
+
+/* Animación continua sin cortes */
+@keyframes caerHojaInfinita {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(30px) rotate(180deg);
+        opacity: 0.7;
+    }
+    100% {
+        top: 85%;
+        transform: translateX(-20px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding: 10px;
+    background-color: #477647;
+}
+
+nav a {
+    flex: 1;
+    text-align: center;
+    padding: 10px 5px;
+    background-color: #d8ffa7;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .anime-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .anime-list img {
+        height: 150px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+}
+
+/* Página de géneros */
+
+.generos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin: 30px 15px;
+    align-items: start;
+}
+
+.generos a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+/* MARCO INSPIRADO EN TOTORO */
+
+.marco-totoro {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 2 / 3;
+
+    padding: 9px;
+
+    box-sizing: border-box;
+
+    background: #173b25;
+
+    border-radius: 48% 48% 20% 20% / 22% 22% 12% 12%;
+
+    box-shadow:
+        5px 6px 0 #0d2818,
+        8px 10px 12px rgba(0, 0, 0, 0.35);
+
+    overflow: visible;
+}
+
+
+/* OREJA IZQUIERDA */
+.marco-totoro::before {
+    content: "";
+
+    position: absolute;
+
+    top: -20px;
+    left: 18%;
+
+    width: 32px;
+    height: 45px;
+
+    background: #173b25;
+
+    border-radius: 70% 20% 10% 20%;
+
+    transform: rotate(-18deg);
+
+    z-index: -1;
+}
+
+
+/* OREJA DERECHA */
+.marco-totoro::after {
+    content: "";
+
+    position: absolute;
+
+    top: -20px;
+    right: 18%;
+
+    width: 32px;
+    height: 45px;
+
+    background: #173b25;
+
+    border-radius: 20% 70% 20% 10%;
+
+    transform: rotate(18deg);
+
+    z-index: -1;
+}
+
+
+/* PORTADA */
+.marco-totoro img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 42% 42% 17% 17% / 18% 18% 10% 10%;
+}
+
+
+/* NOMBRE DEL GÉNERO */
+.generos span {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 48px;
+
+    margin-top: 35px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    background: #ddd;
+
+    color: #173b25;
+
+    border-radius: 50px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.20);
+}
+
+.generos a:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 800px) {
+    .generos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pie-pagina{
+    background-color: #173b25;
+    color: #e5f5a3;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 1;
+}
+
+/* Tarjetas de animes de romance */
+/* Diseño de las portadas de Romance */
+/* =========================
+   ROMANCE
+========================= */
+
+.descripcion-genero {
+    text-align: center;
+    color: #173b25;
+    font-size: 17px;
+    margin: 10px auto 35px;
+}
+
+.lista-animes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin: 30px 15px;
+    align-items: start;
+}
+
+.lista-animes a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.lista-animes .marco-totoro {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+}
+
+.lista-animes .marco-totoro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.lista-animes span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 35px;
+    padding: 8px 12px;
+
+    background-color: #ddd;
+    color: #173b25;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.20);
+}
+main h2{
+    text-align: center;
+}
+
+.lista-animes .marco-totoro {
+    height: 420px !important;
+    aspect-ratio: auto !important;
+    box-sizing: border-box;
+}
+
+.lista-animes .marco-totoro img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Nombres de animes en las páginas secundarias */
+
+.lista-animes span {
+    background-color: #173b25;
+    color: #e5f0df;
+    border-radius: 10px;
+    min-height: 48px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Lluvia de corazones en Romance */
+.lluvia-corazones {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.lista-animes {
+    position: relative;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.corazon {
+    position: absolute;
+    top: -40px;
+    color: #f28ab2;
+    font-size: 22px;
+    animation: caer-corazon 5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes caer-corazon {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    75% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Lluvia de espadas para Acción */
+.lluvia-espadas {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.espada {
+    position: absolute;
+    top: -40px;
+    color: #a8b8a5;
+    font-size: 24px;
+    animation: caer-espada 5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes caer-espada {
+    0% {
+        transform: translateY(-20px) rotate(-35deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    75% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(140deg);
+        opacity: 0;
+    }
+}
+
+/* Lluvia de estrellas para Fantasía */
+.lluvia-estrellas {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.estrella {
+    position: absolute;
+    top: -40px;
+    color: #f5d76e;
+    font-size: 22px;
+    text-shadow: 0 0 8px rgba(245, 215, 110, 0.7);
+    animation: caer-estrella 5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes caer-estrella {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Lluvia de balones para Deportes */
+.lluvia-balones {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.balon {
+    position: absolute;
+    top: -40px;
+    font-size: 24px;
+    animation: caer-balon 5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes caer-balon {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    75% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Lluvia de notas musicales para Drama */
+.lluvia-notas {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.nota-musical {
+    position: absolute;
+    top: -40px;
+    color: #b9a0d4;
+    font-size: 24px;
+    animation: caer-nota 5s linear forwards;
+    opacity: 0;
+}
+
+@keyframes caer-nota {
+    0% {
+        transform: translateY(-20px) rotate(-15deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    75% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* Lluvia de estrellitas para Comedia */
+.lluvia-comedia {
+    position: fixed;
+    top: 130px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 130px);
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.estrella-comedia {
+    position: absolute;
+    top: -40px;
+    color: #ffda55;
+    font-size: 22px;
+    text-shadow: 0 0 6px rgba(255, 218, 85, 0.6);
+    animation: caer-comedia 4s ease-in forwards;
+    opacity: 0;
+}
+
+@keyframes caer-comedia {
+    0% {
+        transform: translateY(-20px) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateY(50vh) rotate(180deg) scale(1.2);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(85vh) rotate(360deg) scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* DISEÑO DE LA PÁGINA EN EMISIÓN */
+
+.pagina-emision .lista-animes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    width: 92%;
+    max-width: 1200px;
+    margin: 35px auto 50px;
+    align-items: stretch;
+}
+
+.pagina-emision .lista-animes .marco-totoro {
+    width: 100%;
+    min-width: 0;
+    height: 420px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center bottom;
+}
+
+.pagina-emision .lista-animes .marco-totoro img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.pagina-emision .lista-animes .marco-totoro span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* EFECTO AL ACERCAR EL CURSOR */
+
+.pagina-emision .lista-animes .marco-totoro:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* AJUSTE PARA PANTALLAS PEQUEÑAS */
+
+@media (max-width: 900px) {
+    .pagina-emision .lista-animes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+}
+
+@media (max-width: 500px) {
+    .pagina-emision .lista-animes {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+}
+
+/* Título de la página En emisión */
+.pagina-emision .titulo-emision {
+    text-align: center;
+    margin: 25px auto;
+    width: 100%;
+}
+
+/* Cuatro tarjetas centradas y uniformes */
+.pagina-emision .lista-animes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+    width: 92%;
+    max-width: 1200px;
+    margin: 35px auto 50px;
+}
+
+/* Efecto al pasar el cursor */
+.pagina-emision .lista-animes .marco-totoro {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pagina-emision .lista-animes .marco-totoro:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+@media (max-width: 900px) {
+    .pagina-emision .lista-animes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .pagina-emision .lista-animes {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+}
+
+body.pagina-emision main h1.titulo-emision {
+    display: block;
+    width: 100%;
+    text-align: center !important;
+    margin: 25px 0;
+    box-sizing: border-box;
+}
+
+/* Etiquetas ovaladas para los nombres de En emisión */
+.pagina-emision .lista-animes .marco-totoro {
+    background: initial;
+    box-shadow: initial;
+    overflow: visible;
+}
+
+.pagina-emision .lista-animes .marco-totoro span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: #eee8ef !important;
+    color: #315f50 !important;
+
+    border-radius: 50px !important;
+    margin-top: 10px;
+    min-height: 58px;
+    padding: 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mantener el efecto de levantar la tarjeta */
+.pagina-emision .lista-animes .marco-totoro:hover {
+    transform: translateY(-12px);
+}
+
+/* Recuperar el marco original de Totoro */
+.pagina-emision .lista-animes .marco-totoro {
+    background: #174f3b;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+    overflow: visible;
+}
+
+/* Separar la etiqueta de la portada */
+.pagina-emision .lista-animes .marco-totoro img {
+    display: block;
+    margin-bottom: 0;
+}
+
+/* Etiqueta ovalada gris, 1 cm debajo de la portada */
+.pagina-emision .lista-animes .marco-totoro span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #eee8ef !important;
+    color: #315f50 !important;
+    border-radius: 50px !important;
+    margin-top: 38px !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Alinear todas las etiquetas de En emisión */
+/* Alinear las etiquetas de En emisión */
+.pagina-emision .lista-animes .marco-totoro {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.pagina-emision .lista-animes .marco-totoro img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    flex: none;
+    object-fit: contain;
+    margin-bottom: 0;
+}
+
+.pagina-emision .lista-animes .marco-totoro span {
+    flex: 0 0 58px;
+    height: 58px !important;
+    min-height: 58px !important;
+    margin-top: 38px !important;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px 8px;
+    line-height: 1.15;
+}
+
+/* =================================
+   MIS FAVORITOS - LOVE FOR ANIME
+================================= */
+
+.pagina-favoritos main {
+    width: 92%;
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 25px;
+    background: #efffcf;
+    border: 3px solid #173b25;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+/* Título principal */
+.pagina-favoritos .titulo-favoritos {
+    text-align: center;
+    color: #173b25;
+    font-size: 32px;
+    margin: 10px 0 30px;
+}
+
+/* Lista vertical de animes */
+.pagina-favoritos .lista-favoritos {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Tarjetas de favoritos */
+.pagina-favoritos .item-favorito {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 20px;
+    background: #d8ffa7;
+    border: 2px solid #477647;
+    border-radius: 18px;
+    box-shadow: 4px 5px 0 rgba(23, 59, 37, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el cursor */
+.pagina-favoritos .item-favorito:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 18px rgba(23, 59, 37, 0.2);
+}
+
+/* Número de cada favorito */
+.pagina-favoritos .numero-ranking {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    background: #173b25;
+    color: #e5f5a3;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Portadas */
+.pagina-favoritos .poster-fav {
+    display: block;
+    width: 115px;
+    height: 165px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 4px solid #173b25;
+    border-radius: 12px;
+    box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* Información del anime */
+.pagina-favoritos .info-fav {
+    flex: 1;
+    min-width: 0;
+}
+
+.pagina-favoritos .info-fav h3 {
+    margin: 0 0 10px;
+    color: #173b25;
+    font-size: 23px;
+}
+
+.pagina-favoritos .estrellas {
+    margin-bottom: 10px;
+    color: #c58b00;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+.pagina-favoritos .info-fav p {
+    margin: 0;
+    color: #29483b;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Botones */
+.pagina-favoritos .acciones-fav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.pagina-favoritos .btn-info,
+.pagina-favoritos .btn-quitar {
+    display: block;
+    padding: 11px 14px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.pagina-favoritos .btn-info {
+    background: #173b25;
+    color: #e5f5a3;
+}
+
+.pagina-favoritos .btn-info:hover {
+    background: #477647;
+    transform: scale(1.04);
+}
+
+.pagina-favoritos .btn-quitar {
+    background: #eee8ef;
+    color: #173b25;
+    border: 2px solid #477647;
+}
+
+.pagina-favoritos .btn-quitar:hover {
+    background: #c9dfae;
+    transform: scale(1.04);
+}
+
+/* Mensaje cuando no quedan favoritos */
+.pagina-favoritos .mensaje-vacio {
+    text-align: center;
+    color: #173b25;
+    padding: 25px;
+    font-size: 18px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 700px) {
+    .pagina-favoritos main {
+        width: 94%;
+        padding: 14px;
+        margin: 22px auto;
+    }
+
+    .pagina-favoritos .titulo-favoritos {
+        font-size: 27px;
+    }
+
+    .pagina-favoritos .item-favorito {
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .pagina-favoritos .poster-fav {
+        width: 100px;
+        height: 145px;
+    }
+
+    .pagina-favoritos .info-fav {
+        flex: 1 1 55%;
+    }
+
+    .pagina-favoritos .info-fav h3 {
+        font-size: 19px;
+    }
+
+    .pagina-favoritos .info-fav p {
+        font-size: 14px;
+    }
+
+    .pagina-favoritos .acciones-fav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .pagina-favoritos .btn-info,
+    .pagina-favoritos .btn-quitar {
+        flex: 1;
+    }
+}

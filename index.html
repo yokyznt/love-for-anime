@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love for anime</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>✦ Love for anime</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="img/fondos/totoro_final.jpeg"
+                 alt="Paisaje de Totoro">
+            <h2 class="titulo-hero">LOVE FOR<br>ANIME</h2>
+        </section>
+
+        <section class="vistos">
+            <div id="hojas-contenedor"></div>
+            <h2>Mis seis animes más vistos</h2>
+
+            <div class="carrusel-contenedor">
+          <div class="carrusel-track">
+            <!-- Las 6 portadas principales con sus rutas exactas -->
+            <img src="img/portadas/a_silent_voice.jpeg" alt="A Silent Voice">
+            <img src="img/portadas/your_name.jpeg" alt="Your Name">
+            <img src="img/portadas/yuri_on_ice.jpeg" alt="Yuri on Ice">
+            <img src="img/portadas/nana.jpeg" alt="Nana">
+            <img src="img/portadas/banana_fish.jpeg" alt="Banana Fish">
+            <img src="img/portadas/given.jpeg" alt="Given">
+
+            <!-- Repetimos las mismas 6 para que el movimiento sea continuo -->
+            <img src="img/portadas/a_silent_voice.jpeg" alt="A Silent Voice">
+            <img src="img/portadas/your_name.jpeg" alt="Your Name">
+            <img src="img/portadas/yuri_on_ice.jpeg" alt="Yuri on Ice">
+            <img src="img/portadas/nana.jpeg" alt="Nana">
+            <img src="img/portadas/banana_fish.jpeg" alt="Banana Fish">
+            <img src="img/portadas/given.jpeg" alt="Given">
+          </div>
+        </div>
+      </section>
+
+<!-- Totoro SVG sin archivos externos -->
+<div class="chibis-contenedor">
+  <div class="totoro-caminando">
+    <svg viewBox="0 0 100 100" class="totoro-svg">
+      <!-- Orejas -->
+      <ellipse cx="38" cy="22" rx="5" ry="14" fill="#7d8ca3" />
+      <ellipse cx="62" cy="22" rx="5" ry="14" fill="#7d8ca3" />
+      
+      <!-- Cuerpo principal -->
+      <ellipse cx="50" cy="58" rx="32" ry="34" fill="#7d8ca3" />
+      
+      <!-- Panza blanca -->
+      <ellipse cx="50" cy="63" rx="22" ry="24" fill="#ffffff" />
+      
+      <!-- Ojos -->
+      <circle cx="38" cy="42" r="5" fill="#ffffff" />
+      <circle cx="38" cy="42" r="2" fill="#2d3748" />
+      <circle cx="62" cy="42" r="5" fill="#ffffff" />
+      <circle cx="62" cy="42" r="2" fill="#2d3748" />
+      
+      <!-- Nariz -->
+      <polygon points="47,46 53,46 50,49" fill="#2d3748" />
+      
+      <!-- Marcas de la panza (▲) -->
+      <path d="M43,52 L47,56 L51,52 Z" fill="#7d8ca3" />
+      <path d="M49,52 L53,56 L57,52 Z" fill="#7d8ca3" />
+      <path d="M46,60 L50,64 L54,60 Z" fill="#7d8ca3" />
+      
+      <!-- Patitas -->
+      <ellipse cx="38" cy="90" rx="7" ry="5" fill="#5a687d" class="pata-izq" />
+      <ellipse cx="62" cy="90" rx="7" ry="5" fill="#5a687d" class="pata-der" />
+    </svg>
+  </div>
+</div>
+
+<script>
+  function crearHojasInfinitas() {
+      const contenedor = document.getElementById('hojas-contenedor');
+      if (!contenedor) return;
+
+      contenedor.innerHTML = ''; // Limpia ejecuciones previas
+      const totalHojas = 20; // Cantidad constante de hojas en pantalla
+
+      for (let i = 0; i < totalHojas; i++) {
+          const hoja = document.createElement('div');
+          hoja.classList.add('hoja-cafe');
+
+          // Distribución horizontal uniforme
+          hoja.style.left = Math.random() * 100 + '%';
+          
+          // Duración y tiempos negativos para que ya haya hojas cayendo desde el segundo 0
+          const duracion = Math.random() * 4 + 6; // Entre 6 y 10 segundos
+          const retrasoNegativo = -(Math.random() * duracion); // Inicia la animación en curso
+          const tamano = Math.random() * 8 + 12;
+
+          hoja.style.animationDuration = duracion + 's';
+          hoja.style.animationDelay = retrasoNegativo + 's';
+          hoja.style.width = tamano + 'px';
+          hoja.style.height = (tamano * 1.5) + 'px';
+
+          contenedor.appendChild(hoja);
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', crearHojasInfinitas);
+</script>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="generos.html">Géneros</a>
+            <a href="emision.html">En emisión</a>
+            <a href="favoritos.html">Mis favoritos</a>
+        </nav>
+    </main>
+    
+</body>
+</html>
