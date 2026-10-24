@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Love for anime</string>
+    <string name="title_activity_main">Love for anime</string>
+    <string name="package_name">mx.loveforanime.app</string>
+    <string name="custom_url_scheme">mx.loveforanime.app</string>
+</resources>
