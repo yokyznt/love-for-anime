@@ -4,7 +4,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 const VERSION = require('./package.json').version;
-const ENTREGA = path.join(os.homedir(), 'Desktop', 'LoveForAnime-APK');
+const ENTREGA = path.join(os.homedir(), 'Trabajos', 'APKs', 'LoveForAnime-APK');
 const PROPS = path.join(ENTREGA, 'llaves', 'keystore.properties');
 
 const env = Object.assign({}, process.env);
